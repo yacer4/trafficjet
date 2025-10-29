@@ -1,4 +1,4 @@
-import nodemailer from 'nodemailer';
+const nodemailer = require('nodemailer');
 
 // Configure nodemailer with your domain SMTP
 const transporter = nodemailer.createTransport({
@@ -22,7 +22,7 @@ function setCorsHeaders(res) {
   );
 }
 
-export default async function handler(req, res) {
+async function handler(req, res) {
   // Handle CORS preflight
   if (req.method === 'OPTIONS') {
     setCorsHeaders(res);
@@ -94,3 +94,5 @@ export default async function handler(req, res) {
     res.status(500).json({ error: 'Failed to send email', details: error.message });
   }
 }
+
+module.exports = handler;

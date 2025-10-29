@@ -4,7 +4,10 @@
       "Bash(dir /b \"C:\\Users\\Yusra\\Desktop\\TrafficJetMedia\")",
       "Bash(findstr:*)",
       "Bash(dir /b /s \"C:\\Users\\Yusra\\Desktop\\TrafficJetMedia\\src\\components\")",
-      "Bash(dir \"C:\\Users\\Yusra\\Desktop\\TrafficJetMedia\")"
+      "Bash(dir \"C:\\Users\\Yusra\\Desktop\\TrafficJetMedia\")",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)"
     ],
     "deny": [],
     "ask": []
