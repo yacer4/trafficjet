@@ -1,4 +1,4 @@
-function handler(req, res) {
+export default function handler(req, res) {
   res.setHeader('Access-Control-Allow-Credentials', 'true');
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS');
@@ -10,5 +10,3 @@ function handler(req, res) {
 
   res.status(200).json({ status: 'OK' });
 }
-
-module.exports = handler;
