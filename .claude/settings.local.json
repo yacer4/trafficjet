@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dir /b \"C:\\Users\\Yusra\\Desktop\\TrafficJetMedia\")",
+      "Bash(findstr:*)",
+      "Bash(dir /b /s \"C:\\Users\\Yusra\\Desktop\\TrafficJetMedia\\src\\components\")"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
