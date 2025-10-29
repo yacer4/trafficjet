@@ -177,10 +177,10 @@ const Portfolio = () => {
       clearTimeout(touchTimeoutRef.current);
     }
 
-    // Set timeout to clear touch state after 3 seconds
+    // Set timeout to clear touch state after 7 seconds
     touchTimeoutRef.current = setTimeout(() => {
       setTouchedIndex(null);
-    }, 3000);
+    }, 7000);
   };
 
   const handleTouchEnd = () => {
@@ -190,7 +190,7 @@ const Portfolio = () => {
     }
     touchTimeoutRef.current = setTimeout(() => {
       setTouchedIndex(null);
-    }, 2000);
+    }, 7000);
   };
 
   return (
