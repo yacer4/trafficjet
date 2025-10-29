@@ -75,7 +75,7 @@ const About = () => {
             Our Journey
           </h1>
           <p className="text-xl text-white/90 max-w-3xl mx-auto">
-            From startup to industry leader, we've been helping brands soar since 2019.
+            From startup to industry leader, we've been helping brands soar since 2020.
           </p>
         </div>
       </section>
