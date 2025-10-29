@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { TrendingUp, Users, Eye, ArrowRight, Star } from "lucide-react";
 import { useState } from "react";
+import { useRef } from "react";
 import EspaceRealEstateImg from "@/assets/EspaceRealEstate.jpg";
 import Flan from "@/assets/Flan.jpg";
 import Tra from "@/assets/Tra.jpg";
@@ -13,6 +14,8 @@ import Pure from "@/assets/Pure.jpg";
 
 const Portfolio = () => {
   const [activeFilter, setActiveFilter] = useState("All");
+  const [touchedIndex, setTouchedIndex] = useState<number | null>(null);
+  const touchTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const projects = [
     {
@@ -165,6 +168,31 @@ const Portfolio = () => {
     { label: "Repeat Clients", value: "92%" },
   ];
 
+  const handleTouchStart = (index: number, e: React.TouchEvent) => {
+    e.preventDefault();
+    setTouchedIndex(index);
+
+    // Clear previous timeout
+    if (touchTimeoutRef.current) {
+      clearTimeout(touchTimeoutRef.current);
+    }
+
+    // Set timeout to clear touch state after 3 seconds
+    touchTimeoutRef.current = setTimeout(() => {
+      setTouchedIndex(null);
+    }, 3000);
+  };
+
+  const handleTouchEnd = () => {
+    // Keep showing for a bit, then hide
+    if (touchTimeoutRef.current) {
+      clearTimeout(touchTimeoutRef.current);
+    }
+    touchTimeoutRef.current = setTimeout(() => {
+      setTouchedIndex(null);
+    }, 2000);
+  };
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -205,6 +233,8 @@ const Portfolio = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group relative aspect-[4/3] rounded-lg overflow-hidden cursor-pointer block"
+                onTouchStart={(e) => handleTouchStart(index, e)}
+                onTouchEnd={handleTouchEnd}
               >
                 {/* Project Image */}
                 <img
@@ -212,9 +242,11 @@ const Portfolio = () => {
                   alt={project.name}
                   className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                 />
-                
+
                 {/* Hover Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
+                <div className={`absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent transition-opacity duration-300 ${
+                  touchedIndex === index ? 'opacity-100' : 'opacity-0 md:group-hover:opacity-100'
+                }`}>
                   <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
                     <div className="inline-block px-3 py-1 bg-primary text-white text-xs font-semibold rounded-full mb-3">
                       {project.category}
