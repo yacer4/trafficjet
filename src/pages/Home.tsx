@@ -130,7 +130,7 @@ const Home = () => {
         </div>
 
         <div className="relative z-10 container mx-auto px-4 text-center">
-          <div className="max-w-4xl mx-auto space-y-8 animate-fade-in-up -mt-24">
+          <div className="max-w-4xl mx-auto space-y-8 animate-fade-in-up -mt-24 md:-mt-16 sm:mt-8">
             <div className="inline-flex items-center gap-2 bg-primary/30 backdrop-blur-sm border border-primary rounded-full px-6 py-2 text-sm">
               <div className="flex items-center gap-2 animate-pulse">
                 <Plane className="w-4 h-4 text-primary-glow" />
